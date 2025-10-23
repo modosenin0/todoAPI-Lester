@@ -46,10 +46,36 @@ Production mode:
 npm start
 ```
 
+### Running Tests
+Run the unit tests (custom minimal test runner):
+```bash
+npm test
+```
+
 ### API Endpoints
 
-- `GET /` - Welcome message and API info
-- `GET /health` - Health check endpoint
+* `GET /` - Welcome message and API info
+* `GET /health` - Health check endpoint
+
+#### Tasks API
+
+* `GET /v1/tasks` — list tasks with optional filtering. Returns an object: `{ count, tasks }`.
+  * Query parameters:
+    * `status` — one of `pending`, `in-progress`, `completed`
+    * `priority` — one of `low`, `medium`, `high`
+    * `search` — case-insensitive substring match on `title` or `description`
+  * Examples:
+    * `/v1/tasks?status=pending`
+    * `/v1/tasks?priority=high`
+    * `/v1/tasks?search=report`
+* `GET /v1/tasks/:taskId` — fetch a specific task by id
+* `POST /v1/tasks` — create a task
+* `PUT /v1/tasks/:taskId` — update a task
+* `DELETE /v1/tasks/:taskId` — delete a task
+
+Authentication: provide an API key on every request
+
+* Header: `x-api-key: test-api-key-12345`
 
 ## Project Structure
 
