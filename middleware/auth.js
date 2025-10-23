@@ -1,3 +1,4 @@
+//Api key is exposed and not in a .env but this was intentional
 const VALID_API_KEY = 'test-api-key-12345';
 
 export const authenticateApiKey = (req, res, next) => {
